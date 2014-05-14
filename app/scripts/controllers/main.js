@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('mpokDoroTimerApp')
-  .controller('MainCtrl', ['$scope, $interval, $window',
+  .controller('MainCtrl', ['$scope', '$interval', '$window',
     function($scope, $interval, $window) {
 
       // 25 minutes is equal to 1500 seconds
