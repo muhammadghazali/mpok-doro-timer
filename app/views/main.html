@@ -3,7 +3,7 @@
 </div>
 
 <div class="row">
-  <p>Pomodoro: <span ng-bind="pomodoro"></span></p>
+  <p>Pomodoro: <span class="badge" ng-bind="pomodoro"></span></p>
   <p ng-hide="workInProgress"><button type="button" class="btn btn-primary" ng-click="start()">Start</button></p>
   <p ng-show="workInProgress"><button type="button" class="btn btn-danger" ng-click="stop()">Stop</button></p>
 </div>
