@@ -11,8 +11,11 @@ angular.module('mpokDoroTimerApp')
       var timer;
 
       $scope.pomodoro = 0;
+      $scope.workInProgress = false;
 
       $scope.start = function() {
+        $scope.workInProgress = true;
+
         timer = $interval(function() {
           var START = $scope.pomodoro !== 0;
           // Every four pomodorO take a longer break
@@ -30,6 +33,15 @@ angular.module('mpokDoroTimerApp')
           // Cancels a task associated with the `timer`
           $interval.cancel(timer);
         }, timebox);
+      };
+
+      /**
+       * Stop pomodoro. When we hit the stop button, it will hide the stop
+       * button and show the start button.
+       */
+      $scope.stop = function() {
+        $interval.cancel(timer);
+        $scope.workInProgress = false;
       };
     }
   ]);
