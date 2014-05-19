@@ -13,6 +13,12 @@ angular.module('mpokDoroTimerApp')
       $scope.pomodoro = 0;
       $scope.workInProgress = false;
 
+      /**
+       * Start pomodoro. When we hit the start button, it will hide the start
+       * button and show the stop button.
+       * Once the pomodoro started we track the timebox and will notify the user
+       * when we hit 25 minutes.
+       */
       $scope.start = function() {
         $scope.workInProgress = true;
 
