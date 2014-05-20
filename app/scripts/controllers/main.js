@@ -38,6 +38,8 @@ angular.module('mpokDoroTimerApp')
 
           // Cancels a task associated with the `timer`
           $interval.cancel(timer);
+
+          $scope.workInProgress = false;
         }, timebox);
       };
 
