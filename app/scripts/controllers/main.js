@@ -27,7 +27,7 @@ angular.module('mpokDoroTimerApp')
           $scope.pomodoro += 1;
 
           var START = $scope.pomodoro !== 0;
-          // Every four pomodorO take a longer break
+          // Every four pomodoro take a longer break
           var FOURTH_POMODORO = $scope.pomodoro % 4 === 0;
 
           if (START && FOURTH_POMODORO) {
