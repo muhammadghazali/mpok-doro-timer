@@ -23,8 +23,11 @@ angular.module('mpokDoroTimerApp')
         $scope.workInProgress = true;
 
         timer = $interval(function() {
+          // record the pomodoro
+          $scope.pomodoro += 1;
+
           var START = $scope.pomodoro !== 0;
-          // Every four pomodorO take a longer break
+          // Every four pomodoro take a longer break
           var FOURTH_POMODORO = $scope.pomodoro % 4 === 0;
 
           if (START && FOURTH_POMODORO) {
@@ -32,9 +35,6 @@ angular.module('mpokDoroTimerApp')
           } else {
             $window.alert('Come on take a short break for 5 minutes!');
           }
-
-          // record the pomodoro
-          $scope.pomodoro += 1;
 
           // Cancels a task associated with the `timer`
           $interval.cancel(timer);
