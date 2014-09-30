@@ -2,15 +2,26 @@
 
 angular.module('mpokDoroTimerApp')
   .controller('MainCtrl', ['$scope', '$interval', '$window',
-    function($scope, $interval, $window) {
+    'localStorageService',
+    function($scope, $interval, $window, localStorageService) {
 
       // 25 minutes is equal to 1500 seconds
       // 25 minutes is equal to 1500 * 1000 milliseconds
-      var timebox = 1500 * 1000;
+      var timebox = 1500 * 1000,
+        timer = {};
 
-      var timer;
+      // initialization
+      (function(scope) {
+        var pomodoro = parseInt(localStorageService.get('pomodoro'), 10);
 
-      $scope.pomodoro = 0;
+        if (pomodoro === 0) {
+          scope.pomodoro = 0;
+          localStorageService.set('pomodoro', $scope.pomodoro.toString());
+        } else if (pomodoro > 0) {
+          scope.pomodoro = pomodoro;
+        }
+      })($scope);
+
       $scope.workInProgress = false;
 
       /**
@@ -25,6 +36,8 @@ angular.module('mpokDoroTimerApp')
         timer = $interval(function() {
           // record the pomodoro
           $scope.pomodoro += 1;
+
+          localStorageService.set('pomodoro', $scope.pomodoro.toString());
 
           var START = $scope.pomodoro !== 0;
           // Every four pomodoro take a longer break

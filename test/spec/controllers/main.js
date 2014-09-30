@@ -16,12 +16,15 @@ describe('Controller: MainCtrl', function() {
     });
   }));
 
-  it('should attach a pomodoro to the scope', function() {
-    expect(scope.pomodoro).toBeDefined();
-    expect(scope.pomodoro).toBe(0);
+  it('should attach a workInProgress to maintain the pomodoro status', function() {
+    expect(scope.workInProgress).toBeDefined();
   });
 
   it('should have a start method', function() {
     expect(scope.start).toBeDefined();
+  });
+
+  it('should have a stop method', function() {
+    expect(scope.stop).toBeDefined();
   });
 });
