@@ -64,5 +64,13 @@ angular.module('mpokDoroTimerApp')
         $interval.cancel(timer);
         $scope.workInProgress = false;
       };
+
+      /**
+       * Reset the pomodoro count
+       */
+      $scope.reset = function() {
+        localStorageService.clearAll();
+        $scope.pomodoro = 0;
+      };
     }
   ]);
