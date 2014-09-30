@@ -7,12 +7,10 @@ angular.module('mpokDoroTimerApp')
 
       // 25 minutes is equal to 1500 seconds
       // 25 minutes is equal to 1500 * 1000 milliseconds
-      // var timebox = 1500 * 1000,
-      var timebox = 1 * 1000,
+      var timebox = 1500 * 1000,
         timer = {};
 
       // initialization
-
       (function(scope) {
         var pomodoro = parseInt(localStorageService.get('pomodoro'), 10);
 
