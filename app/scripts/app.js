@@ -5,9 +5,14 @@ angular
     'ngCookies',
     'ngResource',
     'ngSanitize',
-    'ngRoute'
+    'ngRoute',
+    'LocalStorageModule'
   ])
-  .config(function ($routeProvider) {
+  .config(['localStorageServiceProvider',
+    function (localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('mpok-doro-timer');
+  }])
+  .config(function($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
