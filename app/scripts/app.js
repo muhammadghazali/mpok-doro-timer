@@ -8,10 +8,9 @@ angular
     'ngRoute',
     'LocalStorageModule'
   ])
-  .config(['localStorageServiceProvider',
-    function (localStorageServiceProvider) {
+  .config(function(localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('mpok-doro-timer');
-  }])
+  })
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
