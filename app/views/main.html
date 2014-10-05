@@ -7,7 +7,7 @@
     <span class="badge" ng-bind="pomodoro"></span>
 
     <div class="btn-group">
-      <button type="button" class="btn btn-primary" ng-click="start()">Start</button>
+      <button ng-hide="workInProgress" type="button" class="btn btn-primary" ng-click="start()">Start</button>
       <button ng-show="workInProgress" type="button" class="btn btn-danger" ng-click="stop()">Stop</button>
       <button ng-show="pomodoro > 0" type="button" class="btn btn-warning" ng-click="reset()">Reset</button>
     </div>
