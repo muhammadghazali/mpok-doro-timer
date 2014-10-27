@@ -2,8 +2,8 @@
 
 angular.module('mpokDoroTimerApp')
   .controller('MainCtrl', ['$scope', '$interval', '$window',
-    'localStorageService',
-    function($scope, $interval, $window, localStorageService) {
+    'localStorageService', 'hotkeys',
+    function($scope, $interval, $window, localStorageService, hotkeys) {
 
       // 25 minutes is equal to 1500 seconds
       // 25 minutes is equal to 1500 * 1000 milliseconds
@@ -12,17 +12,40 @@ angular.module('mpokDoroTimerApp')
 
       // initialization
       (function(scope) {
+        scope.workInProgress = false;
+
         var pomodoro = parseInt(localStorageService.get('pomodoro'), 10);
 
         if (isNaN(pomodoro)) {
           scope.pomodoro = 0;
-          // localStorageService.set('pomodoro', $scope.pomodoro.toString());
         } else if (pomodoro > 0) {
           scope.pomodoro = pomodoro;
         }
-      })($scope);
 
-      $scope.workInProgress = false;
+        // bind a keyboard shortcut
+        hotkeys.bindTo(scope)
+          .add({
+            combo: 'g s',
+            description: 'Start pomodoro',
+            callback: function() {
+              scope.start();
+            }
+          })
+          .add({
+            combo: 'g b',
+            description: 'Stop pomodoro',
+            callback: function() {
+              scope.stop();
+            }
+          })
+          .add({
+            combo: 'g r',
+            description: 'Stop pomodoro',
+            callback: function() {
+              scope.reset();
+            }
+          });
+      })($scope);
 
       /**
        * Start pomodoro. When we hit the start button, it will hide the start
@@ -31,6 +54,7 @@ angular.module('mpokDoroTimerApp')
        * when we hit 25 minutes.
        */
       $scope.start = function() {
+        console.log('start');
         $scope.workInProgress = true;
 
         timer = $interval(function() {

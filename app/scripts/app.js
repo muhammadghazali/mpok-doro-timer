@@ -6,7 +6,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'cfp.hotkeys'
   ])
   .config(function(localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('mpok-doro-timer');
